@@ -1,0 +1,13 @@
+1) Create a Offer{ID, Description, Currency, Price, ValidityInDays} POST
+
+2) Get by id GET
+
+3) Edit by id PUT
+
+4) Cancel by id DELETE
+
+Query{Description, ExpirationDate, Currency, Price} (not expired nor cancelled only)
+
+Expiry
+
+Json format
