@@ -1,5 +1,7 @@
 package com.gamasoft.offers.model;
 
+import com.google.gson.Gson;
+
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Date;
@@ -7,8 +9,9 @@ import java.util.Objects;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 
-public class Offer {
+public class Offer{
 
+    //Immutable entity that represent offers to customers
     public final String name;
     public final String description;
     public final String currency;
@@ -77,4 +80,5 @@ public class Offer {
     public Offer cancel() {
         return new Offer(this.name, this.description, this.currency, this.price, this.validity, this.creationDate, true);
     }
+
 }

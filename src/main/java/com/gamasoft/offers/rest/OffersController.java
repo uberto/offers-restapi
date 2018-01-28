@@ -2,6 +2,7 @@ package com.gamasoft.offers.rest;
 
 import com.gamasoft.offers.model.Offer;
 import com.gamasoft.offers.model.OffersRepository;
+import com.gamasoft.offers.model.RespInfo;
 import com.google.gson.Gson;
 import spark.Request;
 import spark.Response;
@@ -17,14 +18,18 @@ public class OffersController {
 
     public String createOffer(Request request, Response response) {
 
-        Gson gson = new Gson();
-        Offer offer = gson.fromJson(request.body(), Offer.class );
+        Offer offer = Json.offerFromJson(request.body());
 
         offers.add(offer);
 
         response.status(201);
-        return "created! " + Paths.replaceId(Paths.SINGLE_OFFER, offer.name);
+
+        RespInfo res = new RespInfo("Successfully created", 201, Paths.replaceId(Paths.SINGLE_OFFER, offer.name));
+
+        return Json.respInfoToJson(res);
     }
+
+
 
     public String showAll(Request request, Response response) {
         return null;
