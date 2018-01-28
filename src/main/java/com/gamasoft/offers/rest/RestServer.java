@@ -1,6 +1,7 @@
 package com.gamasoft.offers.rest;
 
 import com.gamasoft.offers.model.OffersRepository;
+import spark.ResponseTransformer;
 
 import static spark.Spark.*;
 
@@ -21,10 +22,10 @@ public class RestServer {
         get(Paths.ALL_OFFERS, offersController::showAll);
 
         get(Paths.SINGLE_OFFER, offersController::showSingle);
-//
-//        put("/offer/:id", "application/json", offersController::edit);
-//
-//        delete("/offer/:id", offersController::cancel);
+
+        put(Paths.SINGLE_OFFER, "application/json", offersController::edit);
+
+        delete(Paths.SINGLE_OFFER, offersController::cancel);
 
     }
 

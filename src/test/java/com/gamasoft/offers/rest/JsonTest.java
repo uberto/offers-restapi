@@ -14,7 +14,7 @@ public class JsonTest {
         Offer offer = createOffer("SPECIAL");
         String json = Json.offerToJson(offer);
 
-        System.out.println(json);
+//        System.out.println(json);
 
         Offer newOffer = Json.offerFromJson(json);
         assertThat(newOffer).isEqualTo(offer);

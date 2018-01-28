@@ -38,8 +38,18 @@ public class OffersController {
 
         Offer offer = offers.get(name);
 
-        return offer.toString();
+        if (offer == null)
+            return null; //404
+
+        return Json.offerToJson(offer);
     }
 
 
+    public String edit(Request request, Response response) {
+        return null;
+    }
+
+    public String cancel(Request request, Response response) {
+        return null;
+    }
 }

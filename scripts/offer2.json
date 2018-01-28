@@ -1,0 +1,9 @@
+{
+  "name":"OFF2",
+  "description":"very good stuff",
+  "currency":"GBP",
+  "price":234.5,
+  "validity":{"seconds":259200000,"nanos":0},
+  "creationDate":{"seconds":1517180916,"nanos":259000000},
+  "isCancelled":false
+}
