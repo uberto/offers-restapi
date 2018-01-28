@@ -1,3 +1,5 @@
+User stories
+
 1) Create a Offer{ID, Description, Currency, Price, ValidityInDays} POST
 
 2) Get by id GET
@@ -6,8 +8,10 @@
 
 4) Cancel by id DELETE
 
-Query{Description, ExpirationDate, Currency, Price} (not expired nor cancelled only)
+5) Query by Description (not expired nor cancelled only)
 
-Expiry
+6) Query by Expiration Date
 
-Json format
+7) Query by Currency
+
+8) Query by Price
