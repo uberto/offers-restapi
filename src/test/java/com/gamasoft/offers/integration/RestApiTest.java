@@ -4,6 +4,7 @@ import com.gamasoft.offers.model.Offer;
 import com.gamasoft.offers.model.OffersRepository;
 import com.gamasoft.offers.rest.Json;
 import com.gamasoft.offers.rest.RestServer;
+import com.google.gson.Gson;
 import org.eclipse.jetty.client.HttpClient;
 import org.eclipse.jetty.client.api.ContentResponse;
 import org.eclipse.jetty.client.util.StringContentProvider;
@@ -12,6 +13,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.Duration;
+import java.util.List;
 
 import static com.gamasoft.offers.model.OfferTest.createOffer;
 import static com.gamasoft.offers.model.OffersRepositoryTest.createExampleRepository;
@@ -57,7 +59,6 @@ public class RestApiTest {
 
         String json = Json.offerToJson(createOffer("SPECIAL"));
         ContentResponse response = httpClient.POST("http://localhost:8081/offers")
-                .param("p", "value")
                 .content(new StringContentProvider(json), "application/json")
                 .send();
 
@@ -67,6 +68,26 @@ public class RestApiTest {
         assertThat(msg).isEqualTo("{\"message\":\"Successfully created\",\"httpStatus\":201,\"resouceUri\":\"/offer/SPECIAL\"}");
 
     }
+
+    @Test
+    public void getAllOffers() throws Exception {
+
+        String allOffersJson = httpClient.GET("http://localhost:8081/offers").getContentAsString();
+
+        System.out.println(allOffersJson);
+        assertThat(allOffersJson).contains("OFF1");
+        assertThat(allOffersJson).contains("OFF2");
+        assertThat(allOffersJson).contains("OFF3");
+        Gson gson = new Gson();
+        List list = gson.fromJson(allOffersJson, List.class);
+
+        assertThat(list).hasSize(3);
+//        offers.cancel("OFF2");
+//        offers.replace(createOffer("OFF3").withValidity(Duration.ofMillis(1)));
+
+
+    }
+
 
 
 

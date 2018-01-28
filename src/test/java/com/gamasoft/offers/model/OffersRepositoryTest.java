@@ -1,6 +1,5 @@
 package com.gamasoft.offers.model;
 
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 
 import java.time.Duration;
@@ -10,7 +9,6 @@ import static com.gamasoft.offers.model.OfferTest.createOffer;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OffersRepositoryTest {
-
 
     @Test
     public void addAndRetrieveOffers() {
@@ -46,12 +44,13 @@ public class OffersRepositoryTest {
     }
 
     @Test
-    public void getAllOffersNotExpiredOrCancelled() {
+    public void getAllOffersNotExpiredOrCancelled() throws InterruptedException {
         OffersRepository repository = createExampleRepository();
 
         repository.cancel("OFF2");
         repository.replace(createOffer("OFF3").withValidity(Duration.ofMillis(1)));
 
+        Thread.sleep(10);
         List<Offer> offerList = repository.getAll();
         assertThat(offerList).hasSize(1);
         assertThat(offerList.get(0).name).isEqualTo("OFF1");

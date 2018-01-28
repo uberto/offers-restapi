@@ -30,7 +30,7 @@ public class OffersController {
 
 
     public String showAll(Request request, Response response) {
-        return null;
+        return Json.offersToJson( offers.getAll());
     }
 
     public String showSingle(Request request, Response response) {

@@ -23,6 +23,19 @@ public class OfferTest {
     }
 
 
+    @Test
+    public void cancelChangeStatus() {
+
+        Offer offer = createOffer("OFF1");
+
+        assertThat(offer.isCancelled).isFalse();
+
+        Offer cancelled = offer.cancel();
+
+        assertThat(cancelled.isCancelled).isTrue();
+
+    }
+
 
     public static Offer createOffer(String name) {
         return new Offer(name,"very good stuff", "GBP", 123.45, Duration.ofDays(7));

@@ -4,6 +4,8 @@ import com.gamasoft.offers.model.Offer;
 import com.gamasoft.offers.model.RespInfo;
 import com.google.gson.Gson;
 
+import java.util.List;
+
 public class Json {
 
     private static Gson gson = new Gson();
@@ -18,5 +20,9 @@ public class Json {
 
     public static String offerToJson(Offer offer) {
         return gson.toJson(offer);
+    }
+
+    public static String offersToJson(List<Offer> offers) {
+        return gson.toJson(offers);
     }
 }
