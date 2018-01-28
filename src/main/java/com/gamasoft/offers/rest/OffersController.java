@@ -3,7 +3,6 @@ package com.gamasoft.offers.rest;
 import com.gamasoft.offers.model.Offer;
 import com.gamasoft.offers.model.OffersRepository;
 import com.gamasoft.offers.model.RespInfo;
-import com.google.gson.Gson;
 import spark.Request;
 import spark.Response;
 
@@ -28,7 +27,6 @@ public class OffersController {
 
         return Json.respInfoToJson(res);
     }
-
 
 
     public String showAll(Request request, Response response) {
