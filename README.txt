@@ -22,8 +22,4 @@ User stories
 
 5) Query by Description (not expired nor cancelled only)
 
-6) Query by Expiration Date
-
-7) Query by Currency
-
-8) Query by Price
+6) Simple HATEOAS (links)

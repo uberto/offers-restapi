@@ -53,4 +53,12 @@ public class OffersRepository {
 
         return true;
     }
+
+    public List<Offer> queryByDescription(String word) {
+        //return all Offers that contain the word (case insensitive) in description
+        String search = word.toLowerCase();
+        return getAll().stream()
+                .filter(o -> o.description.toLowerCase().contains(search))
+                .collect(Collectors.toList());
+    }
 }

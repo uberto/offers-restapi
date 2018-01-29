@@ -5,6 +5,7 @@ import com.gamasoft.offers.model.RespInfo;
 import com.google.gson.Gson;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Json {
 
@@ -19,10 +20,10 @@ public class Json {
     }
 
     public static String offerToJson(Offer offer) {
-        return gson.toJson(offer);
+        return gson.toJson(new OfferHateoas( offer));
     }
 
     public static String offersToJson(List<Offer> offers) {
-        return gson.toJson(offers);
+        return gson.toJson(offers.stream().map(OfferHateoas::new).collect(Collectors.toList()));
     }
 }

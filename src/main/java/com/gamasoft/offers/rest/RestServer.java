@@ -23,10 +23,11 @@ public class RestServer {
 
         get(Paths.SINGLE_OFFER, offersController::showSingle);
 
-        put(Paths.SINGLE_OFFER, "application/json", offersController::edit);
+        put(Paths.SINGLE_OFFER_EDIT, "application/json", offersController::edit);
 
         delete(Paths.SINGLE_OFFER, offersController::cancel);
 
+        get(Paths.OFFERS_QUERY, offersController::query);
     }
 
     public void stopServer() {

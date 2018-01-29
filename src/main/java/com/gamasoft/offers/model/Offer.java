@@ -20,7 +20,7 @@ public class Offer{
     public final Instant creationDate;
     public final Boolean isCancelled;
 
-    private Offer(String name, String description, String currency, Double price, Duration validity,
+    protected Offer(String name, String description, String currency, Double price, Duration validity,
                  Instant creationDate, Boolean isCancelled) {
         this.name = name;
         this.description = description;
@@ -81,4 +81,7 @@ public class Offer{
         return new Offer(this.name, this.description, this.currency, this.price, this.validity, this.creationDate, true);
     }
 
+    public Offer withDescription(String description) {
+        return new Offer(this.name, description, this.currency, this.price, this.validity, this.creationDate, this.isCancelled);
+    }
 }
